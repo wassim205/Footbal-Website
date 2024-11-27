@@ -423,7 +423,7 @@ function DisplayAllPlayers() {
   const playersList = JSON.parse(localStorage.getItem("players"));
   playersList.forEach((player) => {
     const playerElement = document.createElement("div");
-    playerElement.classList.add("playerCont");
+    playerElement.classList.add("border", "p-4", "m-2", "bg-white", "rounded-md");
     playerElement.innerHTML = `
     <img src="${player.photo}" alt="${player.name}" width="100"/>
     
