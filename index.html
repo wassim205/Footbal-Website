@@ -14,17 +14,52 @@
         <div class="flex">
             <div class="flex items-center mt-5 -ml-10">
                 <img src="Football_field.svg" alt="" class="relative">
+
                 <img src="playerCard.webp" alt="Goal keeper" id="GK" class="absolute w-32 left-[251px] bottom-6">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[300px] bottom-6 text-[white] rounded-full flex items-center justify-center">
+                    GK</div>
+
                 <img src="playerCard.webp" alt="Goal keeper" id="CB" class="absolute w-32 left-[180px] bottom-48">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[230px] bottom-48 text-[white] rounded-full flex items-center justify-center">
+                    CB</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="CB" class="absolute w-32 left-[320px] bottom-48">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[370px] bottom-48 text-[white] rounded-full flex items-center justify-center">
+                    CB</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="LB" class="absolute w-32 left-[40px] bottom-52">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[90px] bottom-52 text-[white] rounded-full flex items-center justify-center">
+                    LB</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="RB" class="absolute w-32 left-[460px] bottom-52">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[510px] bottom-52 text-[white] rounded-full flex items-center justify-center">
+                    RB</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="CM" class="absolute w-32 left-[251px] bottom-2/4">
+                <div
+                    class="h-8 w-8 bg-black absolute  left-[300px] bottom-2/4 text-[white] rounded-full flex items-center justify-center">
+                    CM</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="CM" class="absolute w-32 left-[400px] bottom-[430px]">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[450px] bottom-[430px] text-[white] rounded-full flex items-center justify-center">
+                    CM</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="CM" class="absolute w-32 left-[100px] bottom-[430px]">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[150px] bottom-[430px] text-[white] rounded-full flex items-center justify-center">
+                    CM</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="LW" class="absolute w-32 left-[80px] top-16">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[127px] top-52 text-[white] rounded-full flex items-center justify-center">
+                    LW</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="RW" class="absolute w-32 left-[420px] top-16">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[467px] top-52 text-[white] rounded-full flex items-center justify-center">
+                    RW</div>
                 <img src="playerCard.webp" alt="Goal keeper" id="ST" class="absolute w-32 left-[251px] top-6">
+                <div
+                    class="h-8 w-8 bg-black absolute left-[300px] top-44 text-[white] rounded-full flex items-center justify-center">
+                    ST</div>
             </div>
             <div class="">
                 <h1 class="text-5xl text-white mt-3">MANAGE YOUR FOOTBALL TEAM</h1>
@@ -51,18 +86,18 @@
                                 </div>
 
                                 <div class="flex text-[white] mt-8 bg-[#1A1A1A] h-12 px-6 mr-10 rounded-lg">
-                                    <button class="font-medium text-2xl font-serif" onclick="addPlayer()">Add a
+                                    <button class="font-medium text-2xl font-serif" id="addAPlayer">Add a
                                         player</button>
                                 </div>
                             </div>
-                            <div class="flex flex-col space-y-10 justify-start">
+                            <div class="flex flex-col space-y-10 justify-start" id="positionFilter">
                                 <div class="flex ml-10 w-full">
                                     <div
                                         class="text-white font-serif font-bold bg-[#6D0000] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         ST
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="ST"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="ST">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -70,8 +105,8 @@
                                         class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         RW
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="RW"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="RW">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -79,8 +114,8 @@
                                         class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         LW
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="LW"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="LW">
                                 </div>
                                 <div class="flex ml-10 w-full left">
@@ -88,8 +123,8 @@
                                         class="text-white font-serif font-bold bg-[#897E07] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         CM
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="CM"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="CM">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -97,8 +132,8 @@
                                         class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         RB
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="RB"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="RB">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -106,8 +141,8 @@
                                         class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         LB
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="LB"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="LB">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -115,8 +150,8 @@
                                         class="text-white font-serif font-bold bg-[#195C03] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         CB
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="CB"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="CB">
                                 </div>
                                 <div class="flex ml-10 w-full">
@@ -124,8 +159,8 @@
                                         class="text-white font-serif font-bold bg-[#00123A] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
                                         GK
                                     </div>
-                                    <input type="text"
-                                        class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
+                                    <input type="text" data-position="GK"
+                                        class="bg-[#2C1616] searchInput text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]"
                                         placeholder="Search for a player" id="GK">
                                 </div>
                             </div>

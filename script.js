@@ -420,10 +420,18 @@ localStorage.setItem("players", JSON.stringify(players));
 
 function DisplayAllPlayers() {
   const playersContainer = document.getElementById("allPlayers");
+  playersContainer.innerHTML = "";
   const playersList = JSON.parse(localStorage.getItem("players"));
   playersList.forEach((player) => {
     const playerElement = document.createElement("div");
-    playerElement.classList.add("border", "p-4", "m-2", "bg-white", "rounded-md");
+    playerElement.classList.add(
+      "border",
+      "p-4",
+      "m-2",
+      "bg-white",
+      "rounded-md",
+      "cursor-pointer"
+    );
     playerElement.innerHTML = `
     <img src="${player.photo}" alt="${player.name}" width="100"/>
     
@@ -441,3 +449,83 @@ function DisplayAllPlayers() {
   });
 }
 DisplayAllPlayers();
+
+const adding = document.getElementById("addAPlayer");
+adding.addEventListener("click", function () {
+  const playerName = prompt("Enter Player Name: ");
+  const playerPosition = prompt("Enter Player Position: ");
+  const playerNationality = prompt("Enter Player Nationality: ");
+  const playerClub = prompt("Enter Player Club: ");
+  const playerRating = parseInt(prompt("Enter Player Rating: "));
+
+  if (
+    playerName &&
+    playerPosition &&
+    playerNationality &&
+    playerClub &&
+    !isNaN(playerRating)
+  ) {
+    const player = {
+      name: playerName,
+      position: playerPosition,
+      nationality: playerNationality,
+      club: playerClub,
+      rating: playerRating,
+    };
+
+    const playersList = JSON.parse(localStorage.getItem("players")) || [];
+    playersList.push(player);
+    localStorage.setItem("players", JSON.stringify(playersList));
+    DisplayAllPlayers();
+  } else {
+    alert("Please fill in all fields and enter a valid rating.");
+  }
+});
+
+const inputBox = document.querySelectorAll(".searchInput");
+inputBox.forEach((input) => {
+  input.addEventListener("keyup", function () {
+    let result = [];
+    let inputVal = input.value.toLowerCase();
+    if (inputVal.length) {
+      const playersList = JSON.parse(localStorage.getItem("players"));
+      const position = input.getAttribute("data-position");
+      result = playersList.filter((player) => {
+        return (
+          player.name.toLowerCase().includes(inputVal) &&
+          player.position === position
+        );
+      });
+      console.log(result);
+      const playersContainer = document.getElementById("allPlayers");
+      playersContainer.innerHTML = "";
+      result.forEach((player) => {
+        const playerElement = document.createElement("div");
+        playerElement.classList.add(
+          "border",
+          "p-4",
+          "m-2",
+          "bg-white",
+          "rounded-md",
+          "cursor-pointer"
+        );
+        playerElement.innerHTML = `
+        <img src="${player.photo}" alt="${player.name}" width="100"/>
+        
+         <h1 class="">${player.name}</h1>
+        <div class="flex gap-2">
+        <img src="${player.flag}" alt="${player.nationality}" width="30" class="h-4 my-1"/>
+        </div>
+
+        <div>Rating : ${player.rating}</div>
+       
+        <div>Position : ${player.position}</div>
+        <div>Club : ${player.club}</div>
+        `;
+        playersContainer.appendChild(playerElement);
+      });
+    } else {
+      DisplayAllPlayers();
+    }
+  });
+});
