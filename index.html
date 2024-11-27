@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,72 +10,95 @@
     <title>Football team management</title>
 </head>
 
-<body class="fixed">
-    <div class="flex w-full flex-row">
-        <div class="h-lvh w-full flex">
-            <div class="mt-4 -ml-10">
-                <img src="Football_field.svg" alt="" id="field">
+<body class="fixed bg-[#242E40]">
+    <div class="flex flex-row">
+        <div class="flex">
+            <div class="flex items-center mt-5 -ml-10">
+                <img src="Football_field.svg" alt="">
             </div>
-            <div class="flex justify-center flex-grow flex-col">
-                <h1 class="text-6xl text-white text-center mt-3">MANAGE YOUR FOOTBALL TEAM</h1>
-                <div class="bg-[#EBEBEB] h-full max-w-screen-sm mr-6 mt-6 mb-6 rounded-md">
-                    <div class="flex flex-col mt-6">
-                        <div class="flex space-x-20">
-                            <div class="text-2xl text-[#300F49] mt-4 ml-10 pb-10">
-                                <h2 class="font-semibold">Formation</h2>
-                                <select name="formations" id="formations" class=" bg-[#1A1A1A] text-white font-serif rounded-md w-36 -ml-2">
-                                    <option value="4-3-3">4-3-3</option>
-                                    <option value="4-4-2">4-4-2</option>
-                                    <option value="3-4-3">3-4-3</option>
-                                    <option value="5-2-1-3">5-2-1-3</option>
-                                    <option value="5-2-3-1">5-2-3-1</option>
-                                    <option value="3-4-1-2">3-4-1-2</option>
-                                    <option value="3-1-4-2">3-1-4-2</option>
-                                    <option value="4-3-1-2">4-3-1-2</option>
-                                    <option value="4-5-1">4-5-1</option>
-                                    <option value="4-2-4">4-2-4</option>
-                                </select>
-                            </div>
+            <div class="">
+                <h1 class="text-5xl text-white mt-3">MANAGE YOUR FOOTBALL TEAM</h1>
 
-                            <div class=" flex text-2xl text-[#8113D6] mt-12 bg-[#1A1A1A] h-8 mx-4 px-2 rounded-lg">
-                                <button class="font-medium text-xl   font-serif" onclick="addPlayer()">Add a player</button>
-                            </div>
+                <div class="flex">
+                    <div class="bg-[#EBEBEB] w-[40em] h-[52em] -ml-5 mr-6 mt-4 mb-6 rounded-md">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between">
+                                <div class="text-2xl text-[#000C34] mt-4 ml-10 pb-10">
+                                    <h2 class="font-semibold">Formation</h2>
+                                    <select name="formations" id="formations" class="bg-[#1A1A1A] text-white font-serif rounded-md w-36 -ml-2">
+                                        <option value="4-3-3">4-3-3</option>
+                                        <option value="4-4-2">4-4-2</option>
+                                        <option value="3-4-3">3-4-3</option>
+                                        <option value="5-2-1-3">5-2-1-3</option>
+                                        <option value="5-2-3-1">5-2-3-1</option>
+                                        <option value="3-4-1-2">3-4-1-2</option>
+                                        <option value="3-1-4-2">3-1-4-2</option>
+                                        <option value="4-3-1-2">4-3-1-2</option>
+                                        <option value="4-5-1">4-5-1</option>
+                                        <option value="4-2-4">4-2-4</option>
+                                    </select>
+                                </div>
 
-                            
+                                <div class="flex text-[white] mt-8 bg-[#1A1A1A] h-12 px-6 mr-10 rounded-lg">
+                                    <button class="font-medium text-2xl font-serif" onclick="addPlayer()">Add a player</button>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-10 justify-start">
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#6D0000] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        ST
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="ST">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        RW
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="RW">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        LW
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="LW">
+                                </div>
+                                <div class="flex ml-10 w-full left">
+                                    <div class="text-white font-serif font-bold bg-[#897E07] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        CM
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="CM">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        RB
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="RB">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        LB
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="LB">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#195C03] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        CB
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="CB">
+                                </div>
+                                <div class="flex ml-10 w-full">
+                                    <div class="text-white font-serif font-bold bg-[#00123A] w-12 h-12 flex justify-center items-center mr-6 rounded-md">
+                                        GK
+                                    </div>
+                                    <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="GK">
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col space-y-10 justify-start ">
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#6D0000] w-12 h-12 flex justify-center items-center mr-6 rounded-md">ST</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="ST">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">RW</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="RW">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#AB7904] w-12 h-12 flex justify-center items-center mr-6 rounded-md">LW</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="LW">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#897E07] w-12 h-12 flex justify-center items-center mr-6 rounded-md">CM</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="CM">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">RB</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="RB">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#0E6081] w-12 h-12 flex justify-center items-center mr-6 rounded-md">LB</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="LB">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#195C03] w-12 h-12 flex justify-center items-center mr-6 rounded-md">CB</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="CB">
-                            </div>
-                            <div class="flex ml-10 w-full">
-                                <div class="text-white font-serif font-bold bg-[#00123A] w-12 h-12 flex justify-center items-center mr-6 rounded-md">GK</div>
-                                <input type="text" class="bg-[#2C1616] text-[#D7D7D7] w-9/12 h-12 rounded-md drop-shadow-2xl pl-4 placeholder:font-semibold placeholder:text-[#D7D7D7]" placeholder="Search for a player" id="GK">
-                            </div>
+                    </div>
+                    <div class="bg-[#EBEBEB] h-[52em] w-[37em] mb-6 mt-4 rounded-md">
+                        <h3 class="text-4xl text-[#000C34] font-serif text-center mt-2">Players</h3>
+                        <div id="allPlayers">
+                            <!-- Here all the players will be displayed -->
                         </div>
                     </div>
                 </div>
@@ -82,17 +106,7 @@
         </div>
     </div>
 
-    <script>
-        function addPlayer() {
-            // Add player logic here
-            console.log("Add player button clicked");
-        }
-
-        function showPlayers() {
-            // Show players logic here
-            console.log("Show players button clicked");
-        }
-    </script>
+   
 </body>
 
 </html>
