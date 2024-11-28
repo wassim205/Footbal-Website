@@ -416,6 +416,8 @@ const players = [
   },
 ];
 
+localStorage.setItem("players", JSON.stringify(players));
+
 function displayAllPlayers() {
   const playersContainer = document.getElementById("allPlayers");
   playersContainer.innerHTML = "";
@@ -428,12 +430,16 @@ function displayAllPlayers() {
       "m-2",
       "bg-white",
       "rounded-md",
-      "cursor-pointer"
+      "cursor-pointer",
+      "ParentFunc"
     );
     playerElement.innerHTML = `
-    <img src="${player.photo}" alt="${player.name}" width="100"/>
+    <div class='flex justify-between'>
+    <i class="fa-regular fa-pen-to-square Edit"></i>
+    <i class="fa-solid fa-xmark Remove"></i></div>
+    <img src="${player.photo}" alt="${player.name}" width="100" class='mt-1'/>
     
-     <h1 class="">${player.name}</h1>
+     <h1 class="mt-1">${player.name}</h1>
     <div class="flex gap-2">
     <img src="${player.flag}" alt="${player.nationality}" width="30" class="h-4 my-1"/>
     </div>
@@ -445,6 +451,7 @@ function displayAllPlayers() {
     `;
     playersContainer.appendChild(playerElement);
   });
+  Removing();
 }
 
 function addPlayer(event) {
@@ -462,21 +469,32 @@ function addPlayer(event) {
     playerClub &&
     !isNaN(playerRating)
   ) {
+    // Retrieve existing players or initialize empty array
+    let players = JSON.parse(localStorage.getItem("players")) || [];
+
+    // Create a new player object with a default photo if not provided
     const player = {
       name: playerName,
       position: playerPosition,
       nationality: playerNationality,
       club: playerClub,
       rating: parseInt(playerRating),
+      photo: "https://cdn.sofifa.net/players/placeholder.png", // Add a placeholder image
+      flag: `https://cdn.sofifa.net/flags/${playerNationality
+        .toLowerCase()
+        .slice(0, 2)}.png`, // Generate flag URL
     };
 
-    const players = JSON.parse(localStorage.getItem("players"));
+    // Add the new player
     players.push(player);
 
+    // Save updated players list
     localStorage.setItem("players", JSON.stringify(players));
 
+    // Refresh display
     displayAllPlayers();
 
+    // Reset form and hide adding box
     document.getElementById("playerForm").reset();
     document.getElementById("AddingBox").classList.add("hidden");
   } else {
@@ -503,9 +521,13 @@ function searchPlayers(input) {
       "m-2",
       "bg-white",
       "rounded-md",
-      "cursor-pointer"
+      "cursor-pointer",
+      "ParentFunc"
     );
     playerElement.innerHTML = `
+    <div class='flex justify-between'>
+    <i class="fa-regular fa-pen-to-square Edit"></i>
+    <i class="fa-solid fa-xmark Remove"></i></div>
     <img src="${player.photo}" alt="${player.name}" width="100"/>
     
      <h1 class="">${player.name}</h1>
@@ -520,6 +542,7 @@ function searchPlayers(input) {
     `;
     playersContainer.appendChild(playerElement);
   });
+  Removing();
 }
 
 document.getElementById("addAPlayer").addEventListener("click", function () {
@@ -544,22 +567,6 @@ document.querySelectorAll(".searchInput").forEach((input) => {
 });
 
 displayAllPlayers();
-
-// const selectedFormation = document.getElementById('formations');
-// const Formation1 = document.getElementById('formation1');
-// const Formation2 = document.getElementById('formation2');
-
-// selectedFormation.addEventListener('change', function () {
-//   const selectedFormationValue = selectedFormation.options[selectedFormation.selectedIndex].value;
-//   if (selectedFormationValue === '4-4-2') {
-//     Formation1.classList.add('hidden');
-//     Formation2.classList.remove('hidden');
-//   }
-//   else if (selectedFormationValue === '4-3-3') {
-//       Formation1.classList.remove('hidden');
-//       Formation2.classList.add('hidden');
-//   }
-// });
 
 const selectedFormation = document.getElementById("formations");
 const LeftMiddle = document.getElementById("LeftMiddle");
@@ -680,61 +687,58 @@ selectedFormation.addEventListener("change", function () {
     const LeftTop = document.getElementById("LW");
     const RightTop = document.getElementById("ST");
 
-    midlleLiftPlayer.classList.remove(
-      "-translate-x-16",
-      "-translate-y-12"
-    );
-    LeftMiddle.classList.remove(
-      "-translate-x-16",
-      "-translate-y-12"
-    );
+    midlleLiftPlayer.classList.remove("-translate-x-16", "-translate-y-12");
+    LeftMiddle.classList.remove("-translate-x-16", "-translate-y-12");
     LeftMiddle.innerHTML = "CM";
 
-    LeftCenterPlayer.classList.remove(
-      "-translate-x-16",
-      "translate-y-8"
-    );
-    LeftCenter.classList.remove(
-      "-translate-x-16",
-      "translate-y-8"
-    );
+    LeftCenterPlayer.classList.remove("-translate-x-16", "translate-y-8");
+    LeftCenter.classList.remove("-translate-x-16", "translate-y-8");
 
-    RightCenterPlayer.classList.remove(
-      "-translate-x-20",
-      "-translate-y-2"
-    );
-    RightCenter.classList.remove(
-      "-translate-x-20",
-      "-translate-y-2"
-    );
+    RightCenterPlayer.classList.remove("-translate-x-20", "-translate-y-2");
+    RightCenter.classList.remove("-translate-x-20", "-translate-y-2");
 
-    midlleRightPlayer.classList.remove(
-      "translate-x-10",
-      "translate-y-56"
-    );
-    RightMiddle.classList.remove(
-      "translate-x-10",
-      "translate-y-56"
-    );
+    midlleRightPlayer.classList.remove("translate-x-10", "translate-y-56");
+    RightMiddle.classList.remove("translate-x-10", "translate-y-56");
     RightMiddle.innerHTML = "RW";
 
-    LeftTopStriker.classList.remove(
-      "translate-x-20",
-      "-translate-y-2"
-    );
-    LeftTop.classList.remove(
-      "translate-x-20",
-      "-translate-y-2"
-    );
+    LeftTopStriker.classList.remove("translate-x-20", "-translate-y-2");
+    LeftTop.classList.remove("translate-x-20", "-translate-y-2");
     LeftTopStriker.innerHTML = "LW";
 
-    RightTopStriker.classList.remove(
-      "translate-x-24",
-      "translate-y-8"
-    );
-    RightTop.classList.remove(
-      "translate-x-24",
-      "translate-y-8"
-    );
+    RightTopStriker.classList.remove("translate-x-24", "translate-y-8");
+    RightTop.classList.remove("translate-x-24", "translate-y-8");
   }
 });
+function Removing() {
+  const removeButtons = document.querySelectorAll(".Remove");
+  removeButtons.forEach((removeButton) => {
+    removeButton.addEventListener("click", (e) => {
+      const playerElement = e.target.closest(".ParentFunc");
+      const playerName = playerElement.querySelector("h1").textContent;
+
+      const players = JSON.parse(localStorage.getItem("players"));
+      const updatedPlayers = players.filter(
+        (player) => player.name !== playerName
+      );
+
+      localStorage.setItem("players", JSON.stringify(updatedPlayers));
+
+      playerElement.remove();
+    });
+  });
+}
+
+function initializePlayers() {
+  // Check if players exist in local storage
+  if (!localStorage.getItem("players")) {
+    // If not, set the initial players from the original array
+    localStorage.setItem("players", JSON.stringify(players));
+  }
+
+  // Display players
+  displayAllPlayers();
+}
+
+// Call initialization when script loads
+initializePlayers();
+
