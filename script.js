@@ -416,9 +416,7 @@ const players = [
   },
 ];
 
-localStorage.setItem("players", JSON.stringify(players));
-
-function DisplayAllPlayers() {
+function displayAllPlayers() {
   const playersContainer = document.getElementById("allPlayers");
   playersContainer.innerHTML = "";
   const playersList = JSON.parse(localStorage.getItem("players"));
@@ -448,15 +446,14 @@ function DisplayAllPlayers() {
     playersContainer.appendChild(playerElement);
   });
 }
-DisplayAllPlayers();
 
-const adding = document.getElementById("addAPlayer");
-adding.addEventListener("click", function () {
-  const playerName = prompt("Enter Player Name: ");
-  const playerPosition = prompt("Enter Player Position: ");
-  const playerNationality = prompt("Enter Player Nationality: ");
-  const playerClub = prompt("Enter Player Club: ");
-  const playerRating = parseInt(prompt("Enter Player Rating: "));
+function addPlayer(event) {
+  event.preventDefault();
+  const playerName = document.getElementById("playerName").value;
+  const playerPosition = document.getElementById("playerPosition").value;
+  const playerNationality = document.getElementById("playerNationality").value;
+  const playerClub = document.getElementById("playerClub").value;
+  const playerRating = document.getElementById("playerRating").value;
 
   if (
     playerName &&
@@ -470,62 +467,80 @@ adding.addEventListener("click", function () {
       position: playerPosition,
       nationality: playerNationality,
       club: playerClub,
-      rating: playerRating,
+      rating: parseInt(playerRating),
     };
 
-    const playersList = JSON.parse(localStorage.getItem("players")) || [];
-    playersList.push(player);
-    localStorage.setItem("players", JSON.stringify(playersList));
-    DisplayAllPlayers();
+    const players = JSON.parse(localStorage.getItem("players"));
+    players.push(player);
+
+    localStorage.setItem("players", JSON.stringify(players));
+
+    displayAllPlayers();
+
+    document.getElementById("playerForm").reset();
+    document.getElementById("AddingBox").classList.add("hidden");
   } else {
     alert("Please fill in all fields and enter a valid rating.");
   }
+}
+
+function searchPlayers(input) {
+  const playersContainer = document.getElementById("allPlayers");
+  playersContainer.innerHTML = "";
+  const playersList = JSON.parse(localStorage.getItem("players"));
+  const position = input.getAttribute("data-position");
+  const result = playersList.filter((player) => {
+    return (
+      player.name.toLowerCase().includes(input.value.toLowerCase()) &&
+      player.position === position
+    );
+  });
+  result.forEach((player) => {
+    const playerElement = document.createElement("div");
+    playerElement.classList.add(
+      "border",
+      "p-4",
+      "m-2",
+      "bg-white",
+      "rounded-md",
+      "cursor-pointer"
+    );
+    playerElement.innerHTML = `
+    <img src="${player.photo}" alt="${player.name}" width="100"/>
+    
+     <h1 class="">${player.name}</h1>
+    <div class="flex gap-2">
+    <img src="${player.flag}" alt="${player.nationality}" width="30" class="h-4 my-1"/>
+    </div>
+
+    <div>Rating : ${player.rating}</div>
+   
+    <div>Position : ${player.position}</div>
+    <div>Club : ${player.club}</div>
+    `;
+    playersContainer.appendChild(playerElement);
+  });
+}
+
+document.getElementById("addAPlayer").addEventListener("click", function () {
+  document.getElementById("AddingBox").classList.remove("hidden");
 });
 
-const inputBox = document.querySelectorAll(".searchInput");
-inputBox.forEach((input) => {
-  input.addEventListener("keyup", function () {
-    let result = [];
-    let inputVal = input.value.toLowerCase();
-    if (inputVal.length) {
-      const playersList = JSON.parse(localStorage.getItem("players"));
-      const position = input.getAttribute("data-position");
-      result = playersList.filter((player) => {
-        return (
-          player.name.toLowerCase().includes(inputVal) &&
-          player.position === position
-        );
-      });
-      console.log(result);
-      const playersContainer = document.getElementById("allPlayers");
-      playersContainer.innerHTML = "";
-      result.forEach((player) => {
-        const playerElement = document.createElement("div");
-        playerElement.classList.add(
-          "border",
-          "p-4",
-          "m-2",
-          "bg-white",
-          "rounded-md",
-          "cursor-pointer"
-        );
-        playerElement.innerHTML = `
-        <img src="${player.photo}" alt="${player.name}" width="100"/>
-        
-         <h1 class="">${player.name}</h1>
-        <div class="flex gap-2">
-        <img src="${player.flag}" alt="${player.nationality}" width="30" class="h-4 my-1"/>
-        </div>
+document.getElementById("Cancling").addEventListener("click", function () {
+  document.getElementById("playerForm").reset();
+  document.getElementById("AddingBox").classList.add("hidden");
+});
 
-        <div>Rating : ${player.rating}</div>
-       
-        <div>Position : ${player.position}</div>
-        <div>Club : ${player.club}</div>
-        `;
-        playersContainer.appendChild(playerElement);
-      });
+document.getElementById("playerForm").addEventListener("submit", addPlayer);
+
+document.querySelectorAll(".searchInput").forEach((input) => {
+  input.addEventListener("keyup", function () {
+    if (input.value.length) {
+      searchPlayers(input);
     } else {
-      DisplayAllPlayers();
+      displayAllPlayers();
     }
   });
 });
+
+displayAllPlayers();
