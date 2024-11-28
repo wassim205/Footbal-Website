@@ -544,3 +544,197 @@ document.querySelectorAll(".searchInput").forEach((input) => {
 });
 
 displayAllPlayers();
+
+// const selectedFormation = document.getElementById('formations');
+// const Formation1 = document.getElementById('formation1');
+// const Formation2 = document.getElementById('formation2');
+
+// selectedFormation.addEventListener('change', function () {
+//   const selectedFormationValue = selectedFormation.options[selectedFormation.selectedIndex].value;
+//   if (selectedFormationValue === '4-4-2') {
+//     Formation1.classList.add('hidden');
+//     Formation2.classList.remove('hidden');
+//   }
+//   else if (selectedFormationValue === '4-3-3') {
+//       Formation1.classList.remove('hidden');
+//       Formation2.classList.add('hidden');
+//   }
+// });
+
+const selectedFormation = document.getElementById("formations");
+const LeftMiddle = document.getElementById("LeftMiddle");
+const RightMiddle = document.getElementById("RightMiddle");
+const LeftCenter = document.getElementById("CenterPlayerLeft");
+const RightCenter = document.getElementById("CenterPlayerRight");
+const LeftTopStriker = document.getElementById("LeftStriker");
+const RightTopStriker = document.getElementById("RightStriker");
+
+selectedFormation.addEventListener("change", function () {
+  const selectedFormationValue =
+    selectedFormation.options[selectedFormation.selectedIndex].value;
+  if (selectedFormationValue === "4-4-2") {
+    const midlleLiftPlayer = document.getElementById("CM3");
+    const midlleRightPlayer = document.getElementById("RW");
+    const LeftCenterPlayer = document.getElementById("CM1");
+    const RightCenterPlayer = document.getElementById("CM2");
+    const LeftTop = document.getElementById("LW");
+    const RightTop = document.getElementById("ST");
+
+    midlleLiftPlayer.classList.add(
+      "-translate-x-16",
+      "-translate-y-12",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    LeftMiddle.classList.add(
+      "-translate-x-16",
+      "-translate-y-12",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    LeftMiddle.innerHTML = "LM";
+
+    LeftCenterPlayer.classList.add(
+      "-translate-x-16",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    LeftCenter.classList.add(
+      "-translate-x-16",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+
+    RightCenterPlayer.classList.add(
+      "-translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightCenter.classList.add(
+      "-translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+
+    midlleRightPlayer.classList.add(
+      "translate-x-10",
+      "translate-y-56",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightMiddle.classList.add(
+      "translate-x-10",
+      "translate-y-56",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightMiddle.innerHTML = "RM";
+
+    LeftTopStriker.classList.add(
+      "translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    LeftTop.classList.add(
+      "translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    LeftTopStriker.innerHTML = "ST";
+
+    RightTopStriker.classList.add(
+      "translate-x-24",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightTop.classList.add(
+      "translate-x-24",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+  } else {
+    const midlleLiftPlayer = document.getElementById("CM3");
+    const midlleRightPlayer = document.getElementById("RW");
+    const LeftCenterPlayer = document.getElementById("CM1");
+    const RightCenterPlayer = document.getElementById("CM2");
+    const LeftTop = document.getElementById("LW");
+    const RightTop = document.getElementById("ST");
+
+    midlleLiftPlayer.classList.remove(
+      "-translate-x-16",
+      "-translate-y-12"
+    );
+    LeftMiddle.classList.remove(
+      "-translate-x-16",
+      "-translate-y-12"
+    );
+    LeftMiddle.innerHTML = "CM";
+
+    LeftCenterPlayer.classList.remove(
+      "-translate-x-16",
+      "translate-y-8"
+    );
+    LeftCenter.classList.remove(
+      "-translate-x-16",
+      "translate-y-8"
+    );
+
+    RightCenterPlayer.classList.remove(
+      "-translate-x-20",
+      "-translate-y-2"
+    );
+    RightCenter.classList.remove(
+      "-translate-x-20",
+      "-translate-y-2"
+    );
+
+    midlleRightPlayer.classList.remove(
+      "translate-x-10",
+      "translate-y-56"
+    );
+    RightMiddle.classList.remove(
+      "translate-x-10",
+      "translate-y-56"
+    );
+    RightMiddle.innerHTML = "RW";
+
+    LeftTopStriker.classList.remove(
+      "translate-x-20",
+      "-translate-y-2"
+    );
+    LeftTop.classList.remove(
+      "translate-x-20",
+      "-translate-y-2"
+    );
+    LeftTopStriker.innerHTML = "LW";
+
+    RightTopStriker.classList.remove(
+      "translate-x-24",
+      "translate-y-8"
+    );
+    RightTop.classList.remove(
+      "translate-x-24",
+      "translate-y-8"
+    );
+  }
+});
