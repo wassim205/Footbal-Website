@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="tailwindcss.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <title>Football team management</title>
 </head>
@@ -209,6 +211,57 @@
                 <label for="playerRating" class="font-semibold">Rating :</label>
                 <input type="number" id="playerRating" class="border pl-1 py-1 rounded w-full mb-2" required min="1"
                     max="100" />
+
+                <div id="goalkeeperStats" class="hidden">
+                    <label for="playerDiving">Diving:</label>
+                    <input type="number" id="playerDiving" name="playerDiving"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerHandling">Handling:</label>
+                    <input type="number" id="playerHandling" name="playerHandling"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerKicking">Kicking:</label>
+                    <input type="number" id="playerKicking" name="playerKicking"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerReflexes">Reflexes:</label>
+                    <input type="number" id="playerReflexes" name="playerReflexes"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerSpeed">Speed:</label>
+                    <input type="number" id="playerSpeed" name="playerSpeed"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerPositioning">Positioning:</label>
+                    <input type="number" id="playerPositioning" name="playerPositioning"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+                </div>
+
+                <div id="playerStats" class="hidden">
+                    <label for="playerPace">Pace:</label>
+                    <input type="number" id="playerPace" name="playerPace" class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerShooting">Shooting:</label>
+                    <input type="number" id="playerShooting" name="playerShooting"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerPassing">Passing:</label>
+                    <input type="number" id="playerPassing" name="playerPassing"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerDribbling">Dribbling:</label>
+                    <input type="number" id="playerDribbling" name="playerDribbling"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerDefending">Defending:</label>
+                    <input type="number" id="playerDefending" name="playerDefending"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+
+                    <label for="playerPhysical">Physical:</label>
+                    <input type="number" id="playerPhysical" name="playerPhysical"
+                        class="border pl-1 py-1 rounded w-full mb-2">
+                </div>
 
                 <button id="savePlayer" class="bg-green-500 text-white px-4 py-2 rounded" type="submit">Save</button>
                 <button id="Cancling" class="bg-red-500 text-white px-4 py-2 rounded ml-2" type="button">Cancel</button>
