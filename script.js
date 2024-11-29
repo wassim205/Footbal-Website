@@ -453,15 +453,60 @@ function displayAllPlayers() {
   });
   Removing();
 }
-
 function addPlayer(event) {
   event.preventDefault();
-  const playerName = document.getElementById("playerName").value;
+
   const playerPosition = document.getElementById("playerPosition").value;
+
+  // Check if the relevant stats section is visible based on the player's position
+  if (playerPosition === "GK") {
+    // Ensure goalkeeper stats are visible
+    const goalkeeperStatsVisible = !document
+      .getElementById("goalkeeperStats")
+      .classList.contains("hidden");
+    if (!goalkeeperStatsVisible) {
+      alert("Please fill in all required fields for Goalkeeper.");
+      return;
+    }
+  } else {
+    // Ensure outfield player stats are visible
+    const playerStatsVisible = !document
+      .getElementById("playerStats")
+      .classList.contains("hidden");
+    if (!playerStatsVisible) {
+      alert("Please fill in all required fields for Outfield Players.");
+      return;
+    }
+  }
+
+  const playerName = document.getElementById("playerName").value;
   const playerNationality = document.getElementById("playerNationality").value;
   const playerClub = document.getElementById("playerClub").value;
   const playerRating = document.getElementById("playerRating").value;
 
+  let playerStats;
+
+  if (playerPosition === "GK") {
+    playerStats = {
+      diving: document.getElementById("playerDiving").value,
+      handling: document.getElementById("playerHandling").value,
+      kicking: document.getElementById("playerKicking").value,
+      reflexes: document.getElementById("playerReflexes").value,
+      speed: document.getElementById("playerSpeed").value,
+      positioning: document.getElementById("playerPositioning").value,
+    };
+  } else {
+    playerStats = {
+      pace: document.getElementById("playerPace").value,
+      shooting: document.getElementById("playerShooting").value,
+      passing: document.getElementById("playerPassing").value,
+      dribbling: document.getElementById("playerDribbling").value,
+      defending: document.getElementById("playerDefending").value,
+      physical: document.getElementById("playerPhysical").value,
+    };
+  }
+
+  // Ensure all required fields are filled
   if (
     playerName &&
     playerPosition &&
@@ -469,38 +514,46 @@ function addPlayer(event) {
     playerClub &&
     !isNaN(playerRating)
   ) {
-    // Retrieve existing players or initialize empty array
     let players = JSON.parse(localStorage.getItem("players")) || [];
 
-    // Create a new player object with a default photo if not provided
     const player = {
       name: playerName,
       position: playerPosition,
       nationality: playerNationality,
       club: playerClub,
       rating: parseInt(playerRating),
-      photo: "https://cdn.sofifa.net/players/placeholder.png", // Add a placeholder image
+      stats: playerStats,
+      photo: "https://cdn.sofifa.net/players/placeholder.png",
       flag: `https://cdn.sofifa.net/flags/${playerNationality
         .toLowerCase()
-        .slice(0, 2)}.png`, // Generate flag URL
+        .slice(0, 2)}.png`,
     };
 
-    // Add the new player
     players.push(player);
-
-    // Save updated players list
     localStorage.setItem("players", JSON.stringify(players));
-
-    // Refresh display
     displayAllPlayers();
-
-    // Reset form and hide adding box
     document.getElementById("playerForm").reset();
     document.getElementById("AddingBox").classList.add("hidden");
   } else {
     alert("Please fill in all fields and enter a valid rating.");
   }
 }
+
+document
+  .getElementById("playerPosition")
+  .addEventListener("change", function () {
+    const position = this.value;
+    const goalkeeperStats = document.getElementById("goalkeeperStats");
+    const playerStats = document.getElementById("playerStats");
+
+    if (position === "GK") {
+      goalkeeperStats.classList.remove("hidden");
+      playerStats.classList.add("hidden");
+    } else {
+      goalkeeperStats.classList.add("hidden");
+      playerStats.classList.remove("hidden");
+    }
+  });
 
 function searchPlayers(input) {
   const playersContainer = document.getElementById("allPlayers");
@@ -741,4 +794,3 @@ function initializePlayers() {
 
 // Call initialization when script loads
 initializePlayers();
-
