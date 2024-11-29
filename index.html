@@ -184,7 +184,7 @@
         class="bg-gray-800 border drop-shadow-md fixed inset-0 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white p-5 rounded shadow-lg w-1/2">
             <h2 class="text-lg font-bold mb-4 font-serif">Add New Player</h2>
-            <form id="playerForm">
+            <form id="addPlayerForm">
                 <label for="playerName" class="font-semibold">Name :</label>
                 <input type="text" id="playerName" class="border pl-1 py-1 rounded w-full mb-2 active:border-red-600"
                     required />
@@ -269,6 +269,85 @@
         </div>
     </div>
 
+
+    <div id="EditingBox"
+        class="bg-gray-800 border drop-shadow-md fixed inset-0 bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-5 rounded shadow-lg w-1/2">
+            <h2 class="text-lg font-bold mb-4 font-serif">Editing Player Info</h2>
+            <form id="editPlayerForm" class="hidden">
+                <label for="playerName" class="font-semibold">Name:</label>
+                <input type="text" id="playerName" class="border pl-1 py-1 rounded w-full mb-2" required />
+
+                <label for="playerPosition" class="font-semibold">Position:</label>
+                <select id="playerPosition" class="border pl-1 py-1 rounded w-full mb-2" required>
+                    <option value="">Select Position</option>
+                    <option value="GK">Goal Keeper</option>
+                    <option value="CB">Center Back</option>
+                    <option value="LB">Left Back</option>
+                    <option value="RB">Right Back</option>
+                    <option value="CM">Center Midfielder</option>
+                    <option value="LW">Left Winger</option>
+                    <option value="RW">Right Winger</option>
+                    <option value="ST">Striker</option>
+                </select>
+
+                <label for="playerNationality" class="font-semibold">Nationality:</label>
+                <input type="text" id="playerNationality" class="border pl-1 py-1 rounded w-full mb-2" required />
+
+                <label for="playerClub" class="font-semibold">Club:</label>
+                <input type="text" id="playerClub" class="border pl-1 py-1 rounded w-full mb-2" required />
+
+                <label for="playerRating" class="font-semibold">Rating:</label>
+                <input type="number" id="playerRating" class="border pl-1 py-1 rounded w-full mb-2" required />
+
+                <div id="goalkeeperStats" class="hidden">
+                    <h3 class="font-semibold">Goalkeeper Stats</h3>
+                    <label for="playerDiving" class="font-semibold">Diving:</label>
+                    <input type="number" id="playerDiving" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerHandling" class="font-semibold">Handling:</label>
+                    <input type="number" id="playerHandling" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerKicking" class="font-semibold">Kicking:</label>
+                    <input type="number" id="playerKicking" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerReflexes" class="font-semibold">Reflexes:</label>
+                    <input type="number" id="playerReflexes" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerSpeed" class="font-semibold">Speed:</label>
+                    <input type="number" id="playerSpeed" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerPositioning" class="font-semibold">Positioning:</label>
+                    <input type="number" id="playerPositioning" class="border pl-1 py-1 rounded w-full mb-2" />
+                </div>
+
+                <div id="outfieldStats" class="hidden">
+                    <h3 class="font-semibold">Outfield Player Stats</h3>
+                    <label for="playerPace" class="font-semibold">Pace:</label>
+                    <input type="number" id="playerPace" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerShooting" class="font-semibold">Shooting:</label>
+                    <input type="number" id="playerShooting" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerPassing" class="font-semibold">Passing:</label>
+                    <input type="number" id="playerPassing" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerDribbling" class="font-semibold">Dribbling:</label>
+                    <input type="number" id="playerDribbling" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerDefending" class="font-semibold">Defending:</label>
+                    <input type="number" id="playerDefending" class="border pl-1 py-1 rounded w-full mb-2" />
+
+                    <label for="playerPhysical" class="font-semibold">Physical:</label>
+                    <input type="number" id="playerPhysical" class="border pl-1 py-1 rounded w-full mb-2" />
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Save Changes</button>
+
+                <button id="Cancle" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Cancel</button>
+            </form>
+        </div>
+    </div>
     <script type="module" src="script.js"></script>
 </body>
 

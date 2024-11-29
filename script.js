@@ -1,423 +1,3 @@
-const players = [
-  {
-    name: "Lionel Messi",
-    photo: "https://cdn.sofifa.net/players/158/023/25_120.png",
-    position: "RW",
-    nationality: "Argentina",
-    flag: "https://cdn.sofifa.net/flags/ar.png",
-    club: "Inter Miami",
-    logo: "https://cdn.sofifa.net/meta/team/239235/120.png",
-    rating: 93,
-    pace: 85,
-    shooting: 92,
-    passing: 91,
-    dribbling: 95,
-    defending: 35,
-    physical: 65,
-  },
-  {
-    name: "Cristiano Ronaldo",
-    photo: "https://cdn.sofifa.net/players/020/801/25_120.png",
-    position: "ST",
-    nationality: "Portugal",
-    flag: "https://cdn.sofifa.net/flags/pt.png",
-    club: "Al Nassr",
-    logo: "https://cdn.sofifa.net/meta/team/2506/120.png",
-    rating: 91,
-    pace: 84,
-    shooting: 94,
-    passing: 82,
-    dribbling: 87,
-    defending: 34,
-    physical: 77,
-  },
-  {
-    name: "Kevin De Bruyne",
-    photo: "https://cdn.sofifa.net/players/192/985/25_120.png",
-    position: "CM",
-    nationality: "Belgium",
-    flag: "https://cdn.sofifa.net/flags/be.png",
-    club: "Manchester City",
-    logo: "https://cdn.sofifa.net/players/239/085/25_120.png",
-    rating: 91,
-    pace: 74,
-    shooting: 86,
-    passing: 93,
-    dribbling: 88,
-    defending: 64,
-    physical: 78,
-  },
-  {
-    name: "Kylian Mbappé",
-    photo: "https://cdn.sofifa.net/players/231/747/25_120.png",
-    position: "ST",
-    nationality: "France",
-    flag: "https://cdn.sofifa.net/flags/fr.png",
-    club: "Real Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
-    rating: 92,
-    pace: 97,
-    shooting: 89,
-    passing: 80,
-    dribbling: 92,
-    defending: 39,
-    physical: 77,
-  },
-  {
-    name: "Virgil van Dijk",
-    photo: "https://cdn.sofifa.net/players/203/376/25_120.png",
-    position: "CB",
-    nationality: "Netherlands",
-    flag: "https://cdn.sofifa.net/flags/nl.png",
-    club: "Liverpool",
-    logo: "https://cdn.sofifa.net/meta/team/8/120.png",
-    rating: 90,
-    pace: 75,
-    shooting: 60,
-    passing: 70,
-    dribbling: 72,
-    defending: 92,
-    physical: 86,
-  },
-  {
-    name: "Antonio Rudiger",
-    photo: "https://cdn.sofifa.net/players/205/452/25_120.png",
-    position: "CB",
-    nationality: "Germany",
-    flag: "https://cdn.sofifa.net/flags/de.png",
-    club: "Real Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
-    rating: 88,
-    pace: 82,
-    shooting: 55,
-    passing: 73,
-    dribbling: 70,
-    defending: 86,
-    physical: 86,
-  },
-  {
-    name: "Neymar Jr",
-    photo: "https://cdn.sofifa.net/players/190/871/25_120.png",
-    position: "LW",
-    nationality: "Brazil",
-    flag: "https://cdn.sofifa.net/flags/br.png",
-    club: "Al-Hilal",
-    logo: "https://cdn.sofifa.net/meta/team/7011/120.png",
-    rating: 90,
-    pace: 91,
-    shooting: 83,
-    passing: 86,
-    dribbling: 94,
-    defending: 37,
-    physical: 61,
-  },
-  {
-    name: "Mohamed Salah",
-    photo: "https://cdn.sofifa.net/players/192/985/25_120.png",
-    position: "RW",
-    nationality: "Egypt",
-    flag: "https://cdn.sofifa.net/flags/eg.png",
-    club: "Liverpool",
-    logo: "https://cdn.sofifa.net/meta/team/8/120.png",
-    rating: 89,
-    pace: 93,
-    shooting: 87,
-    passing: 81,
-    dribbling: 90,
-    defending: 45,
-    physical: 75,
-  },
-  {
-    name: "Joshua Kimmich",
-    photo: "https://cdn.sofifa.net/players/212/622/25_120.png",
-    position: "CM",
-    nationality: "Germany",
-    flag: "https://cdn.sofifa.net/flags/de.png",
-    club: "Bayern Munich",
-    logo: "https://cdn.sofifa.net/meta/team/503/120.png",
-    rating: 89,
-    pace: 70,
-    shooting: 75,
-    passing: 88,
-    dribbling: 84,
-    defending: 84,
-    physical: 81,
-  },
-  {
-    name: "Jan Oblak",
-    photo: "https://cdn.sofifa.net/players/200/389/25_120.png",
-    position: "GK",
-    nationality: "Slovenia",
-    flag: "https://cdn.sofifa.net/flags/si.png",
-    club: "Atletico Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/7980/120.png",
-    rating: 91,
-    diving: 89,
-    handling: 90,
-    kicking: 78,
-    reflexes: 92,
-    speed: 50,
-    positioning: 88,
-  },
-  {
-    name: "Luka Modrić",
-    photo: "https://cdn.sofifa.net/players/177/003/25_120.png",
-    position: "CM",
-    nationality: "Croatia",
-    flag: "https://cdn.sofifa.net/flags/hr.png",
-    club: "Real Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
-    rating: 88,
-    pace: 74,
-    shooting: 78,
-    passing: 89,
-    dribbling: 90,
-    defending: 72,
-    physical: 65,
-  },
-  {
-    name: "Vinicius Junior",
-    photo: "https://cdn.sofifa.net/players/238/794/25_120.png",
-    position: "LW",
-    nationality: "Brazil",
-    flag: "https://cdn.sofifa.net/flags/br.png",
-    club: "Real Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
-    rating: 89,
-    pace: 91,
-    shooting: 88,
-    passing: 85,
-    dribbling: 94,
-    defending: 39,
-    physical: 61,
-  },
-  {
-    name: "Brahim Diáz",
-    photo: "https://cdn.sofifa.net/players/231/410/25_120.png",
-    position: "LW",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "Real Madrid",
-    logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
-    rating: 82,
-    pace: 85,
-    shooting: 74,
-    passing: 78,
-    dribbling: 85,
-    defending: 31,
-    physical: 56,
-  },
-  {
-    name: "Karim Benzema",
-    photo: "https://cdn.sofifa.net/players/165/153/25_120.png",
-    position: "ST",
-    nationality: "France",
-    flag: "https://cdn.sofifa.net/flags/fr.png",
-    club: "Al-Ittihad",
-    logo: "https://cdn.sofifa.net/meta/team/476/120.png",
-    rating: 90,
-    pace: 77,
-    shooting: 90,
-    passing: 83,
-    dribbling: 88,
-    defending: 40,
-    physical: 78,
-  },
-  {
-    name: "Erling Haaland",
-    photo: "https://cdn.sofifa.net/players/239/085/25_120.png",
-    position: "ST",
-    nationality: "Norway",
-    flag: "https://cdn.sofifa.net/flags/no.png",
-    club: "Manchester City",
-    logo: "https://cdn.sofifa.net/players/239/085/25_120.png",
-    rating: 91,
-    pace: 89,
-    shooting: 94,
-    passing: 65,
-    dribbling: 80,
-    defending: 45,
-    physical: 88,
-  },
-  {
-    name: "N'Golo Kanté",
-    photo: "https://cdn.sofifa.net/players/215/914/25_120.png",
-    position: "CDM",
-    nationality: "France",
-    flag: "https://cdn.sofifa.net/flags/fr.png",
-    club: "Al-Ittihad",
-    logo: "https://cdn.sofifa.net/meta/team/476/120.png",
-    rating: 87,
-    pace: 77,
-    shooting: 66,
-    passing: 75,
-    dribbling: 82,
-    defending: 88,
-    physical: 82,
-  },
-  {
-    name: "Alphonso Davies",
-    photo: "https://cdn.sofifa.net/players/234/396/25_120.png",
-    position: "LB",
-    nationality: "Canada",
-    flag: "https://cdn.sofifa.net/flags/ca.png",
-    club: "Bayern Munich",
-    logo: "https://cdn.sofifa.net/meta/team/503/120.png",
-    rating: 84,
-    pace: 96,
-    shooting: 68,
-    passing: 77,
-    dribbling: 82,
-    defending: 76,
-    physical: 77,
-  },
-  {
-    name: "Yassine Bounou",
-    photo: "https://cdn.sofifa.net/players/209/981/25_120.png",
-    position: "GK",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "Al-Hilal",
-    logo: "https://cdn.sofifa.net/meta/team/7011/120.png",
-    rating: 84,
-    diving: 81,
-    handling: 82,
-    kicking: 77,
-    reflexes: 86,
-    speed: 38,
-    positioning: 83,
-  },
-  {
-    name: "Bruno Fernandes",
-    photo: "https://cdn.sofifa.net/players/212/198/25_120.png",
-    position: "CM",
-    nationality: "Portugal",
-    flag: "https://cdn.sofifa.net/flags/pt.png",
-    club: "Manchester United",
-    logo: "https://cdn.sofifa.net/meta/team/14/120.png",
-    rating: 88,
-    pace: 75,
-    shooting: 85,
-    passing: 89,
-    dribbling: 84,
-    defending: 69,
-    physical: 77,
-  },
-  {
-    name: "Jadon Sancho",
-    photo: "https://cdn.sofifa.net/players/233/049/25_120.png",
-    position: "LW",
-    nationality: "England",
-    flag: "https://cdn.sofifa.net/flags/gb-eng.png",
-    club: "Manchester United",
-    logo: "https://cdn.sofifa.net/meta/team/14/120.png",
-    rating: 84,
-    pace: 85,
-    shooting: 74,
-    passing: 78,
-    dribbling: 88,
-    defending: 34,
-    physical: 63,
-  },
-  {
-    name: "Trent Alexander-Arnold",
-    photo: "https://cdn.sofifa.net/players/231/281/25_120.png",
-    position: "RB",
-    nationality: "England",
-    flag: "https://cdn.sofifa.net/flags/gb-eng.png",
-    club: "Liverpool",
-    rating: 87,
-    pace: 76,
-    shooting: 66,
-    passing: 89,
-    dribbling: 80,
-    defending: 79,
-    physical: 71,
-  },
-  {
-    name: "Achraf Hakimi",
-    photo: "https://cdn.sofifa.net/players/235/212/25_120.png",
-    position: "RB",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "Paris Saint-Germain",
-    logo: "https://cdn.sofifa.net/meta/team/591/120.png",
-    rating: 84,
-    pace: 91,
-    shooting: 76,
-    passing: 80,
-    dribbling: 80,
-    defending: 75,
-    physical: 78,
-  },
-  {
-    name: "Youssef En-Nesyri",
-    photo: "https://cdn.sofifa.net/players/235/410/25_120.png",
-    position: "ST",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "Fenerbahçe",
-    logo: "https://cdn.sofifa.net/meta/team/88/120.png",
-    rating: 83,
-    pace: 82,
-    shooting: 82,
-    passing: 63,
-    dribbling: 77,
-    defending: 36,
-    physical: 80,
-  },
-  {
-    name: "Noussair Mazraoui",
-    photo: "https://cdn.sofifa.net/players/236/401/25_120.png",
-    position: "LB",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "Manchester United",
-    logo: "https://cdn.sofifa.net/meta/team/14/120.png",
-    rating: 81,
-    pace: 78,
-    shooting: 66,
-    passing: 77,
-    dribbling: 83,
-    defending: 77,
-    physical: 71,
-  },
-  {
-    name: "Ismael Saibari",
-    photo: "https://cdn.sofifa.net/players/259/480/25_120.png",
-    position: "CM",
-    nationality: "Morocco",
-    flag: "https://cdn.sofifa.net/flags/ma.png",
-    club: "PSV",
-    logo: "https://cdn.sofifa.net/meta/team/682/120.png",
-    rating: 83,
-    pace: 89,
-    shooting: 78,
-    passing: 80,
-    dribbling: 86,
-    defending: 55,
-    physical: 84,
-  },
-  {
-    name: "Gianluigi Donnarumma",
-    photo: "https://cdn.sofifa.net/players/230/621/25_120.png",
-    position: "GK",
-    nationality: "Italy",
-    flag: "https://cdn.sofifa.net/flags/it.png",
-    club: "Paris Saint-Germain",
-    logo: "https://cdn.sofifa.net/meta/team/591/120.png",
-    rating: 89,
-    diving: 88,
-    handling: 84,
-    kicking: 75,
-    reflexes: 90,
-    speed: 50,
-    positioning: 85,
-  },
-];
-
-localStorage.setItem("players", JSON.stringify(players));
-
 function displayAllPlayers() {
   const playersContainer = document.getElementById("allPlayers");
   playersContainer.innerHTML = "";
@@ -452,13 +32,13 @@ function displayAllPlayers() {
     playersContainer.appendChild(playerElement);
   });
   Removing();
+  Editing();
 }
 function addPlayer(event) {
   event.preventDefault();
 
   const playerPosition = document.getElementById("playerPosition").value;
 
-  // Check if the relevant stats section is visible based on the player's position
   if (playerPosition === "GK") {
     // Ensure goalkeeper stats are visible
     const goalkeeperStatsVisible = !document
@@ -469,7 +49,6 @@ function addPlayer(event) {
       return;
     }
   } else {
-    // Ensure outfield player stats are visible
     const playerStatsVisible = !document
       .getElementById("playerStats")
       .classList.contains("hidden");
@@ -506,7 +85,6 @@ function addPlayer(event) {
     };
   }
 
-  // Ensure all required fields are filled
   if (
     playerName &&
     playerPosition &&
@@ -532,7 +110,7 @@ function addPlayer(event) {
     players.push(player);
     localStorage.setItem("players", JSON.stringify(players));
     displayAllPlayers();
-    document.getElementById("playerForm").reset();
+    document.getElementById("addPlayerForm").reset();
     document.getElementById("AddingBox").classList.add("hidden");
   } else {
     alert("Please fill in all fields and enter a valid rating.");
@@ -596,18 +174,26 @@ function searchPlayers(input) {
     playersContainer.appendChild(playerElement);
   });
   Removing();
+  Editing();
 }
 
 document.getElementById("addAPlayer").addEventListener("click", function () {
   document.getElementById("AddingBox").classList.remove("hidden");
+
+  document
+    .getElementById("playerPosition")
+    .removeEventListener("change", handlePositionChange);
+  document
+    .getElementById("playerPosition")
+    .addEventListener("change", handlePositionChange);
 });
 
 document.getElementById("Cancling").addEventListener("click", function () {
-  document.getElementById("playerForm").reset();
+  document.getElementById("addPlayerForm").reset();
   document.getElementById("AddingBox").classList.add("hidden");
 });
 
-document.getElementById("playerForm").addEventListener("submit", addPlayer);
+document.getElementById("addPlayerForm").addEventListener("submit", addPlayer);
 
 document.querySelectorAll(".searchInput").forEach((input) => {
   input.addEventListener("keyup", function () {
@@ -782,15 +368,166 @@ function Removing() {
 }
 
 function initializePlayers() {
-  // Check if players exist in local storage
-  if (!localStorage.getItem("players")) {
-    // If not, set the initial players from the original array
-    localStorage.setItem("players", JSON.stringify(players));
-  }
-
-  // Display players
+  let players = JSON.parse(localStorage.getItem("players")) || [];
+  players = players.map((player) => ({
+    ...player,
+    stats: player.stats || {}, // Add an empty stats object if missing
+  }));
+  localStorage.setItem("players", JSON.stringify(players));
   displayAllPlayers();
 }
 
-// Call initialization when script loads
-initializePlayers();
+displayAllPlayers();
+
+function Editing() {
+  const editingBox = document.getElementById("EditingBox");
+  const Form = document.getElementById("editPlayerForm");
+  const editButtons = document.querySelectorAll(".Edit");
+
+  editButtons.forEach((editButton) => {
+    editButton.addEventListener("click", (e) => {
+      const playerElement = e.target.closest(".ParentFunc");
+      const playerName = playerElement.querySelector("h1").textContent;
+      const players = JSON.parse(localStorage.getItem("players")) || [];
+      const playerToEdit = players.find((player) => player.name === playerName);
+
+      if (playerToEdit) {
+        // Reset the form
+        Form.reset();
+
+        // Populate the main player info
+        document.getElementById("playerName").value = playerToEdit.name;
+        document.getElementById("playerPosition").value = playerToEdit.position;
+        document.getElementById("playerNationality").value =
+          playerToEdit.nationality;
+        document.getElementById("playerClub").value = playerToEdit.club;
+        document.getElementById("playerRating").value = playerToEdit.rating;
+
+        // Populate stats and toggle the correct section
+        toggleStatsSection(playerToEdit.position, playerToEdit.stats || {});
+
+        // Show the editing box
+        editingBox.classList.remove("hidden");
+        Form.classList.remove("hidden")
+      } else {
+        console.error("Player not found:", playerName);
+      }
+    });
+  });
+}
+
+document
+  .getElementById("editPlayerForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent page refresh
+
+    const updatedPlayer = getPlayerDataFromForm(); // Get updated player data from the form
+
+    // Validate input
+    if (
+      !updatedPlayer.name ||
+      !updatedPlayer.nationality ||
+      !updatedPlayer.club
+    ) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // Update the player in localStorage
+    const players = JSON.parse(localStorage.getItem("players")) || [];
+    const playerIndex = players.findIndex(
+      (player) => player.name === updatedPlayer.name
+    );
+
+    if (playerIndex !== -1) {
+      players[playerIndex] = updatedPlayer; // Update the existing player
+      localStorage.setItem("players", JSON.stringify(players)); // Save updated players
+      displayAllPlayers(); // Refresh the player display
+      document.getElementById("EditingBox").classList.add("hidden"); // Hide the editing box
+    } else {
+      console.error("Player not found in localStorage:", updatedPlayer.name);
+    }
+  });
+
+document.getElementById("Cancle").addEventListener("click", () => {
+  const editingBox = document.getElementById("EditingBox");
+  editingBox.classList.add("hidden");
+});
+
+// Function to toggle the visibility of stats sections based on position
+function toggleStatsSection(position, stats = {}) {
+  const goalkeeperStats = document.getElementById("goalkeeperStats");
+  const playerStats = document.getElementById("playerStats");
+
+  if (position === "GK") {
+    goalkeeperStats.classList.remove("hidden");
+    playerStats.classList.add("hidden");
+    document.getElementById("playerDiving").value = stats.diving || "";
+    document.getElementById("playerHandling").value = stats.handling || "";
+    document.getElementById("playerKicking").value = stats.kicking || "";
+    document.getElementById("playerReflexes").value = stats.reflexes || "";
+    document.getElementById("playerSpeed").value = stats.speed || "";
+    document.getElementById("playerPositioning").value =
+      stats.positioning || "";
+  } else {
+    goalkeeperStats.classList.add("hidden");
+    playerStats.classList.remove("hidden");
+    document.getElementById("playerPace").value = stats.pace || "";
+    document.getElementById("playerShooting").value = stats.shooting || "";
+    document.getElementById("playerPassing").value = stats.passing || "";
+    document.getElementById("playerDribbling").value = stats.dribbling || "";
+    document.getElementById("playerDefending").value = stats.defending || "";
+    document.getElementById("playerPhysical").value = stats.physical || "";
+  }
+}
+
+// Function to get player data from the form
+function getPlayerDataFromForm() {
+  return {
+    name: document.getElementById("playerName").value,
+    position: document.getElementById("playerPosition").value,
+    nationality: document.getElementById("playerNationality").value,
+    club: document.getElementById("playerClub").value,
+    rating: parseInt(document.getElementById("playerRating").value, 10),
+    stats: getStatsFromForm(),
+  };
+}
+
+// Function to get stats from the form based on player position
+function getStatsFromForm() {
+  const position = document.getElementById("playerPosition").value;
+  const stats = {};
+
+  if (position === "GK") {
+    stats.diving = document.getElementById("playerDiving").value || "";
+    stats.handling = document.getElementById("playerHandling").value || "";
+    stats.kicking = document.getElementById("playerKicking").value || "";
+    stats.reflexes = document.getElementById("playerReflexes").value || "";
+    stats.speed = document.getElementById("playerSpeed").value || "";
+    stats.positioning =
+      document.getElementById("playerPositioning").value || "";
+  } else {
+    stats.pace = document.getElementById("playerPace").value || "";
+    stats.shooting = document.getElementById("playerShooting").value || "";
+    stats.passing = document.getElementById("playerPassing").value || "";
+    stats.dribbling = document.getElementById("playerDribbling").value || "";
+    stats.defending = document.getElementById("playerDefending").value || "";
+    stats.physical = document.getElementById("playerPhysical").value || "";
+  }
+
+  return stats;
+}
+
+function handlePositionChange() {
+  const position = this.value;
+  const goalkeeperStats = document.getElementById("goalkeeperStats");
+  const playerStats = document.getElementById("playerStats");
+
+  if (position === "GK") {
+    goalkeeperStats.classList.remove("hidden");
+    playerStats.classList.add("hidden");
+  } else {
+    goalkeeperStats.classList.add("hidden");
+    playerStats.classList.remove("hidden");
+  }
+}
