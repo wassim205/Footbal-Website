@@ -4,6 +4,7 @@ function displayAllPlayers() {
   const playersList = JSON.parse(localStorage.getItem("players"));
   playersList.forEach((player) => {
     const playerElement = document.createElement("div");
+    playerElement.draggable = true;
     playerElement.classList.add(
       "border",
       "p-4",
@@ -11,7 +12,8 @@ function displayAllPlayers() {
       "bg-white",
       "rounded-md",
       "cursor-pointer",
-      "ParentFunc"
+      "ParentFunc",
+      "player-card"
     );
     playerElement.innerHTML = `
     <div class='flex justify-between'>
@@ -214,6 +216,12 @@ const LeftCenter = document.getElementById("CenterPlayerLeft");
 const RightCenter = document.getElementById("CenterPlayerRight");
 const LeftTopStriker = document.getElementById("LeftStriker");
 const RightTopStriker = document.getElementById("RightStriker");
+const RightSTStats = document.getElementById("RightST");
+const LeftLW = document.getElementById("LeftLW");
+const RightRW = document.getElementById("RigthRW");
+const LeftCM = document.getElementById("LeftCM");
+const RightCM = document.getElementById("RightCM");
+const CenterCM = document.getElementById("CenterCM");
 
 selectedFormation.addEventListener("change", function () {
   const selectedFormationValue =
@@ -242,6 +250,14 @@ selectedFormation.addEventListener("change", function () {
     );
     LeftMiddle.innerHTML = "LM";
 
+    LeftCM.classList.add(
+      "-translate-x-16",
+      "-translate-y-12",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+
     LeftCenterPlayer.classList.add(
       "-translate-x-16",
       "translate-y-8",
@@ -250,6 +266,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     LeftCenter.classList.add(
+      "-translate-x-16",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    CenterCM.classList.add(
       "-translate-x-16",
       "translate-y-8",
       "transition-all",
@@ -265,6 +288,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightCenter.classList.add(
+      "-translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightCM.classList.add(
       "-translate-x-20",
       "-translate-y-2",
       "transition-all",
@@ -287,6 +317,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightMiddle.innerHTML = "RM";
+    RightRW.classList.add(
+      "translate-x-10",
+      "translate-y-56",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
 
     LeftTopStriker.classList.add(
       "translate-x-20",
@@ -303,6 +340,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     LeftTopStriker.innerHTML = "ST";
+    LeftLW.classList.add(
+      "translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
 
     RightTopStriker.classList.add(
       "translate-x-24",
@@ -312,6 +356,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightTop.classList.add(
+      "translate-x-24",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightSTStats.classList.add(
       "translate-x-24",
       "translate-y-8",
       "transition-all",
@@ -328,24 +379,30 @@ selectedFormation.addEventListener("change", function () {
 
     midlleLiftPlayer.classList.remove("-translate-x-16", "-translate-y-12");
     LeftMiddle.classList.remove("-translate-x-16", "-translate-y-12");
+    LeftCM.classList.remove("-translate-x-16", "-translate-y-12");
     LeftMiddle.innerHTML = "CM";
 
     LeftCenterPlayer.classList.remove("-translate-x-16", "translate-y-8");
     LeftCenter.classList.remove("-translate-x-16", "translate-y-8");
+    CenterCM.classList.remove("-translate-x-16", "translate-y-8");
 
     RightCenterPlayer.classList.remove("-translate-x-20", "-translate-y-2");
     RightCenter.classList.remove("-translate-x-20", "-translate-y-2");
+    RightCM.classList.remove("-translate-x-20", "-translate-y-2");
 
     midlleRightPlayer.classList.remove("translate-x-10", "translate-y-56");
     RightMiddle.classList.remove("translate-x-10", "translate-y-56");
+    RightRW.classList.remove("translate-x-10", "translate-y-56");
     RightMiddle.innerHTML = "RW";
 
     LeftTopStriker.classList.remove("translate-x-20", "-translate-y-2");
     LeftTop.classList.remove("translate-x-20", "-translate-y-2");
+    LeftLW.classList.remove("translate-x-20", "-translate-y-2");
     LeftTopStriker.innerHTML = "LW";
 
     RightTopStriker.classList.remove("translate-x-24", "translate-y-8");
     RightTop.classList.remove("translate-x-24", "translate-y-8");
+    RightSTStats.classList.remove("translate-x-24", "translate-y-8");
   }
 });
 function Removing() {
@@ -369,20 +426,59 @@ function Removing() {
 
 function initializePlayers() {
   let players = JSON.parse(localStorage.getItem("players")) || [];
-  players = players.map((player) => ({
-    ...player,
-    stats: player.stats || {}, // Add an empty stats object if missing
-  }));
+  players = players.map((player) => {
+    // If stats are not in a nested object, restructure the player object
+    if (!player.stats) {
+      const stats =
+        player.position === "GK"
+          ? {
+              diving: player.diving || "",
+              handling: player.handling || "",
+              kicking: player.kicking || "",
+              reflexes: player.reflexes || "",
+              speed: player.speed || "",
+              positioning: player.positioning || "",
+            }
+          : {
+              pace: player.pace || "",
+              shooting: player.shooting || "",
+              passing: player.passing || "",
+              dribbling: player.dribbling || "",
+              defending: player.defending || "",
+              physical: player.physical || "",
+            };
+
+      // Remove individual stat properties
+      const cleanedPlayer = { ...player, stats };
+      delete cleanedPlayer.pace;
+      delete cleanedPlayer.shooting;
+      delete cleanedPlayer.passing;
+      delete cleanedPlayer.dribbling;
+      delete cleanedPlayer.defending;
+      delete cleanedPlayer.physical;
+      delete cleanedPlayer.diving;
+      delete cleanedPlayer.handling;
+      delete cleanedPlayer.kicking;
+      delete cleanedPlayer.reflexes;
+      delete cleanedPlayer.speed;
+      delete cleanedPlayer.positioning;
+
+      return cleanedPlayer;
+    }
+    return player;
+  });
+
   localStorage.setItem("players", JSON.stringify(players));
   displayAllPlayers();
 }
-
-displayAllPlayers();
 
 function Editing() {
   const editingBox = document.getElementById("EditingBox");
   const Form = document.getElementById("editPlayerForm");
   const editButtons = document.querySelectorAll(".Edit");
+  const playerPosition = document.getElementById("editPlayerPosition");
+  const GoalKeeperStats = document.getElementById("editGoalkeeperStats");
+  const outfieldStats = document.getElementById("editOutfieldStats");
 
   editButtons.forEach((editButton) => {
     editButton.addEventListener("click", (e) => {
@@ -392,142 +488,160 @@ function Editing() {
       const playerToEdit = players.find((player) => player.name === playerName);
 
       if (playerToEdit) {
-        // Reset the form
         Form.reset();
 
-        // Populate the main player info
-        document.getElementById("playerName").value = playerToEdit.name;
-        document.getElementById("playerPosition").value = playerToEdit.position;
-        document.getElementById("playerNationality").value =
+        document.getElementById("editPlayerName").value = playerToEdit.name;
+        document.getElementById("editPlayerNationality").value =
           playerToEdit.nationality;
-        document.getElementById("playerClub").value = playerToEdit.club;
-        document.getElementById("playerRating").value = playerToEdit.rating;
+        document.getElementById("editPlayerClub").value = playerToEdit.club;
+        document.getElementById("editPlayerRating").value = playerToEdit.rating;
+        playerPosition.value = playerToEdit.position;
 
-        // Populate stats and toggle the correct section
-        toggleStatsSection(playerToEdit.position, playerToEdit.stats || {});
+        // Ensure stats object exists
+        playerToEdit.stats = playerToEdit.stats || {};
 
-        // Show the editing box
+        if (playerToEdit.position === "GK") {
+          GoalKeeperStats.classList.remove("hidden");
+          outfieldStats.classList.add("hidden");
+
+          // Default to empty string if stat doesn't exist
+          document.getElementById("editPlayerDiving").value =
+            playerToEdit.stats.diving || "";
+          document.getElementById("editPlayerHandling").value =
+            playerToEdit.stats.handling || "";
+          document.getElementById("editPlayerKicking").value =
+            playerToEdit.stats.kicking || "";
+          document.getElementById("editPlayerReflexes").value =
+            playerToEdit.stats.reflexes || "";
+          document.getElementById("editPlayerSpeed").value =
+            playerToEdit.stats.speed || "";
+          document.getElementById("editPlayerPositioning").value =
+            playerToEdit.stats.positioning || "";
+        } else {
+          GoalKeeperStats.classList.add("hidden");
+          outfieldStats.classList.remove("hidden");
+
+          // Default to empty string if stat doesn't exist
+          document.getElementById("editPlayerPace").value =
+            playerToEdit.stats.pace || "";
+          document.getElementById("editPlayerShooting").value =
+            playerToEdit.stats.shooting || "";
+          document.getElementById("editPlayerPassing").value =
+            playerToEdit.stats.passing || "";
+          document.getElementById("editPlayerDribbling").value =
+            playerToEdit.stats.dribbling || "";
+          document.getElementById("editPlayerDefending").value =
+            playerToEdit.stats.defending || "";
+          document.getElementById("editPlayerPhysical").value =
+            playerToEdit.stats.physical || "";
+        }
+
         editingBox.classList.remove("hidden");
-        Form.classList.remove("hidden")
+        Form.classList.remove("hidden");
       } else {
         console.error("Player not found:", playerName);
       }
     });
   });
-}
 
-document
-  .getElementById("editPlayerForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent page refresh
-
-    const updatedPlayer = getPlayerDataFromForm(); // Get updated player data from the form
-
-    // Validate input
-    if (
-      !updatedPlayer.name ||
-      !updatedPlayer.nationality ||
-      !updatedPlayer.club
-    ) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    // Update the player in localStorage
-    const players = JSON.parse(localStorage.getItem("players")) || [];
-    const playerIndex = players.findIndex(
-      (player) => player.name === updatedPlayer.name
-    );
-
-    if (playerIndex !== -1) {
-      players[playerIndex] = updatedPlayer; // Update the existing player
-      localStorage.setItem("players", JSON.stringify(players)); // Save updated players
-      displayAllPlayers(); // Refresh the player display
-      document.getElementById("EditingBox").classList.add("hidden"); // Hide the editing box
+  playerPosition.addEventListener("change", function () {
+    if (playerPosition.value === "GK") {
+      GoalKeeperStats.classList.remove("hidden");
+      outfieldStats.classList.add("hidden");
     } else {
-      console.error("Player not found in localStorage:", updatedPlayer.name);
+      GoalKeeperStats.classList.add("hidden");
+      outfieldStats.classList.remove("hidden");
     }
   });
+}
 
-document.getElementById("Cancle").addEventListener("click", () => {
-  const editingBox = document.getElementById("EditingBox");
-  editingBox.classList.add("hidden");
+const Save = document.getElementById("editSave");
+const cancelButton = document.getElementById("editCancel");
+
+Save.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const updatedPlayer = {
+    name: document.getElementById("editPlayerName").value,
+    position: document.getElementById("editPlayerPosition").value,
+    nationality: document.getElementById("editPlayerNationality").value,
+    club: document.getElementById("editPlayerClub").value,
+    rating: document.getElementById("editPlayerRating").value,
+    photo: "", // You might want to keep the existing photo
+    flag: "", // You might want to keep the existing flag
+    stats: {},
+  };
+
+  if (updatedPlayer.position === "GK") {
+    updatedPlayer.stats = {
+      diving: document.getElementById("editPlayerDiving").value,
+      handling: document.getElementById("editPlayerHandling").value,
+      kicking: document.getElementById("editPlayerKicking").value,
+      reflexes: document.getElementById("editPlayerReflexes").value,
+      speed: document.getElementById("editPlayerSpeed").value,
+      positioning: document.getElementById("editPlayerPositioning").value,
+    };
+  } else {
+    updatedPlayer.stats = {
+      pace: document.getElementById("editPlayerPace").value,
+      shooting: document.getElementById("editPlayerShooting").value,
+      passing: document.getElementById("editPlayerPassing").value,
+      dribbling: document.getElementById("editPlayerDribbling").value,
+      defending: document.getElementById("editPlayerDefending").value,
+      physical: document.getElementById("editPlayerPhysical").value,
+    };
+  }
+
+  const players = JSON.parse(localStorage.getItem("players")) || [];
+  const playerIndex = players.findIndex(
+    (player) => player.name === updatedPlayer.name
+  );
+
+  if (playerIndex !== -1) {
+    // Preserve existing photo and flag
+    updatedPlayer.photo = players[playerIndex].photo;
+    updatedPlayer.flag = players[playerIndex].flag;
+
+    players[playerIndex] = updatedPlayer;
+    localStorage.setItem("players", JSON.stringify(players));
+    alert("Player updated successfully!");
+
+    const editingBox = document.getElementById("EditingBox");
+    editingBox.classList.add("hidden");
+
+    displayAllPlayers();
+  } else {
+    console.error("Player not found for update:", updatedPlayer.name);
+  }
 });
 
-// Function to toggle the visibility of stats sections based on position
-function toggleStatsSection(position, stats = {}) {
-  const goalkeeperStats = document.getElementById("goalkeeperStats");
-  const playerStats = document.getElementById("playerStats");
-
-  if (position === "GK") {
-    goalkeeperStats.classList.remove("hidden");
-    playerStats.classList.add("hidden");
-    document.getElementById("playerDiving").value = stats.diving || "";
-    document.getElementById("playerHandling").value = stats.handling || "";
-    document.getElementById("playerKicking").value = stats.kicking || "";
-    document.getElementById("playerReflexes").value = stats.reflexes || "";
-    document.getElementById("playerSpeed").value = stats.speed || "";
-    document.getElementById("playerPositioning").value =
-      stats.positioning || "";
-  } else {
-    goalkeeperStats.classList.add("hidden");
-    playerStats.classList.remove("hidden");
-    document.getElementById("playerPace").value = stats.pace || "";
-    document.getElementById("playerShooting").value = stats.shooting || "";
-    document.getElementById("playerPassing").value = stats.passing || "";
-    document.getElementById("playerDribbling").value = stats.dribbling || "";
-    document.getElementById("playerDefending").value = stats.defending || "";
-    document.getElementById("playerPhysical").value = stats.physical || "";
-  }
+cancelButton.addEventListener("click", function () {
+  const editingBox = document.getElementById("EditingBox");
+  editingBox.classList.add("hidden");
+  document.getElementById("editPlayerForm").reset();
+});
+// Allow the drop
+function allowDrop(event) {
+  event.preventDefault();
 }
 
-// Function to get player data from the form
-function getPlayerDataFromForm() {
-  return {
-    name: document.getElementById("playerName").value,
-    position: document.getElementById("playerPosition").value,
-    nationality: document.getElementById("playerNationality").value,
-    club: document.getElementById("playerClub").value,
-    rating: parseInt(document.getElementById("playerRating").value, 10),
-    stats: getStatsFromForm(),
-  };
+// Handle the drop
+function drop(event) {
+  event.preventDefault();
+  const playerData = event.dataTransfer.getData("text/plain");
+  const player = JSON.parse(playerData);
+
+  // Get the goalkeeper name element
+  const goalkeeperNameElement = document.getElementById("goalkeeperName");
+
+  // Update the h2 element with the player's name
+  goalkeeperNameElement.innerText = player.name; // Set the player's name
 }
 
-// Function to get stats from the form based on player position
-function getStatsFromForm() {
-  const position = document.getElementById("playerPosition").value;
-  const stats = {};
-
-  if (position === "GK") {
-    stats.diving = document.getElementById("playerDiving").value || "";
-    stats.handling = document.getElementById("playerHandling").value || "";
-    stats.kicking = document.getElementById("playerKicking").value || "";
-    stats.reflexes = document.getElementById("playerReflexes").value || "";
-    stats.speed = document.getElementById("playerSpeed").value || "";
-    stats.positioning =
-      document.getElementById("playerPositioning").value || "";
-  } else {
-    stats.pace = document.getElementById("playerPace").value || "";
-    stats.shooting = document.getElementById("playerShooting").value || "";
-    stats.passing = document.getElementById("playerPassing").value || "";
-    stats.dribbling = document.getElementById("playerDribbling").value || "";
-    stats.defending = document.getElementById("playerDefending").value || "";
-    stats.physical = document.getElementById("playerPhysical").value || "";
-  }
-
-  return stats;
-}
-
-function handlePositionChange() {
-  const position = this.value;
-  const goalkeeperStats = document.getElementById("goalkeeperStats");
-  const playerStats = document.getElementById("playerStats");
-
-  if (position === "GK") {
-    goalkeeperStats.classList.remove("hidden");
-    playerStats.classList.add("hidden");
-  } else {
-    goalkeeperStats.classList.add("hidden");
-    playerStats.classList.remove("hidden");
-  }
-}
+// Handle drag start
+document.querySelectorAll(".player-card").forEach((card) => {
+  card.addEventListener("dragstart", (event) => {
+    const playerData = card.getAttribute("data-player");
+    event.dataTransfer.setData("text/plain", playerData);
+  });
+});

@@ -4,63 +4,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FUT Football Team Management is a web application for managing football teams.">
+    <meta name="keywords" content="FUT, Football Team Management, Football, Team, Management">
     <script src="tailwindcss.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <title>Football team management</title>
+    <title>FUT Football Team Management</title>
 </head>
 
 <body class="fixed bg-[#242E40]">
     <div class="flex flex-row">
         <div class="flex">
-            <div class="flex items-center mt-5 -ml-10">
+            <div class="flex items-center mt-5 -ml-10 md:flex md:flex-row">
                 <img src="Football_field.svg" alt="" class="relative">
-                <div id="formation1" class="" data-form="4-3-3">
-                    <img src="playerCard.webp" alt="Goal keeper" id="GK" class="absolute w-32 left-[251px] bottom-6">
+                <div id="formation1" class="w-[100%]" data-form="4-3-3">
                     <div
+                        class="absolute w-32 left-[242px] bottom-[3.4rem] z-30 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/209/981/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Bono</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>div<br>81</h4>
+                            <h4>han<br>82</h4>
+                            <h4>kic<br>77</h4>
+                            <h4>ref<br>86</h4>
+                            <h4>spe<br>38</h4>
+                            <h4>pos<br>83</h4>
+                        </div>
+                    </div>
+                    <img src="playerCard.webp" alt="Goal keeper" id="GK"
+                        class="absolute w-32 left-[251px] bottom-6 z-0">
+                    <div id="LeftCB"
                         class="h-8 w-8 bg-black absolute left-[300px] bottom-6 text-[white] rounded-full flex items-center justify-center">
                         GK</div>
-
+                    <div class="absolute w-32 z-30 left-[170px] bottom-56 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/205/452/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Antonio</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="CB" class="absolute w-32 left-[180px] bottom-48">
-                    <div
+                    <div id="RightCB"
                         class="h-8 w-8 bg-black absolute left-[230px] bottom-48 text-[white] rounded-full flex items-center justify-center">
                         CB</div>
+                    <div class="absolute w-32 z-30 left-[310px] bottom-56 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">90</h3>
+                            <img src="https://cdn.sofifa.net/players/203/376/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Virgil</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>75</h4>
+                            <h4>sho<br>60</h4>
+                            <h4>pas<br>70</h4>
+                            <h4>dri<br>72</h4>
+                            <h4>def<br>92</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="CB" class="absolute w-32 left-[320px] bottom-48">
-                    <div
+                    <div id="RLeftLB"
                         class="h-8 w-8 bg-black absolute left-[370px] bottom-48 text-[white] rounded-full flex items-center justify-center">
                         CB</div>
+
+                    <div class="absolute w-32 z-30 left-[30px] bottom-60 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/234/396/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Alphonso</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>96</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="LB" class="absolute w-32 left-[40px] bottom-52">
-                    <div
+                    <div id="RightRB"
                         class="h-8 w-8 bg-black absolute left-[90px] bottom-52 text-[white] rounded-full flex items-center justify-center">
                         LB</div>
+                    <div class="absolute w-32 z-30 left-[450px] bottom-60 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/231/281/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Trent</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="RB" class="absolute w-32 left-[460px] bottom-52">
                     <div
                         class="h-8 w-8 bg-black absolute left-[510px] bottom-52 text-[white] rounded-full flex items-center justify-center">
                         RB</div>
+                    <div id="LeftCM"
+                        class="absolute w-32 z-30 left-[90px] bottom-[460px] flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/259/480/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Ismail</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="CM1" class="absolute w-32 left-[251px] bottom-2/4">
                     <div id="CenterPlayerLeft"
                         class="h-8 w-8 bg-black absolute  left-[300px] bottom-2/4 text-[white] rounded-full flex items-center justify-center">
                         CM</div>
+                    <div id="CenterCM"
+                        class="absolute z-30 w-32 left-[240px] bottom-[500px] flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/212/198/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Bruno</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="CM2"
                         class="absolute w-32 left-[400px] bottom-[430px]">
                     <div id="CenterPlayerRight"
                         class="h-8 w-8 bg-black absolute left-[450px] bottom-[430px] text-[white] rounded-full flex items-center justify-center">
                         CM</div>
+                    <div id="RightCM"
+                        class="absolute w-32 z-30 left-[390px] bottom-[460px] flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/215/914/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Kanté</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="CM3"
                         class="absolute w-32 left-[100px] bottom-[430px]">
                     <div id="LeftMiddle"
                         class="h-8 w-8 bg-black absolute left-[150px] bottom-[430px] text-[white] rounded-full flex items-center justify-center">
                         CM</div>
+                    <div id="LeftLW"
+                        class="absolute w-32 z-30 left-[70px] top-[102px] flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/231/410/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Diáz</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="LW" class="absolute w-32 left-[80px] top-16">
                     <div id="LeftStriker"
                         class="h-8 w-8 bg-black absolute left-[127px] top-52 text-[white] rounded-full flex items-center justify-center">
                         LW</div>
+                    <div id="RigthRW"
+                        class="absolute w-32 z-30 left-[410px] top-[102px] flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">84</h3>
+                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2">Messi</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="RW" class="absolute w-32 left-[420px] top-16">
                     <div id="RightMiddle"
                         class="h-8 w-8 bg-black absolute left-[467px] top-52 text-[white] rounded-full flex items-center justify-center">
                         RW</div>
+
+                    <div id="RightST"
+                        class="absolute w-32 left-[243px] top-[3.9rem] z-30 flex flex-col items-center text-[#504737]">
+                        <div class="flex ">
+                            <h3 class="font-semibold text-xs pl-2">99</h3>
+                            <img src="https://cdn.sofifa.net/players/020/801/25_120.png" alt="" width="75px">
+                        </div>
+                        <h3 class="text-xs font-bold relative left-2 bottom-0.5">Ronaldo</h3>
+                        <div class="flex space-x-2 text-[2%] font-bold relative left-2 bottom-1">
+                            <h4>pac<br>82</h4>
+                            <h4>sho<br>55</h4>
+                            <h4>pas<br>73</h4>
+                            <h4>dri<br>70</h4>
+                            <h4>def<br>86</h4>
+                            <h4>phy<br>86</h4>
+                        </div>
+                    </div>
                     <img src="playerCard.webp" alt="Goal keeper" id="ST" class="absolute w-32 left-[251px] top-6">
                     <div id="RightStriker"
                         class="h-8 w-8 bg-black absolute left-[300px] top-[165px] text-[white] rounded-full flex items-center justify-center">
@@ -73,7 +249,7 @@
             <div class="">
                 <h1 class="text-5xl text-white mt-3">MANAGE YOUR FOOTBALL TEAM</h1>
 
-                <div class="flex">
+                <div class="flex ">
                     <div class="bg-[#EBEBEB] w-[40em] h-[52em] -ml-5 mr-6 mt-4 mb-6 rounded-md">
                         <div class="flex flex-col">
                             <div class="flex justify-between">
@@ -275,11 +451,11 @@
         <div class="bg-white p-5 rounded shadow-lg w-1/2">
             <h2 class="text-lg font-bold mb-4 font-serif">Editing Player Info</h2>
             <form id="editPlayerForm" class="hidden">
-                <label for="playerName" class="font-semibold">Name:</label>
-                <input type="text" id="playerName" class="border pl-1 py-1 rounded w-full mb-2" required />
+                <label for="editPlayerName" class="font-semibold">Name:</label>
+                <input type="text" id="editPlayerName" class="border pl-1 py-1 rounded w-full mb-2" required />
 
-                <label for="playerPosition" class="font-semibold">Position:</label>
-                <select id="playerPosition" class="border pl-1 py-1 rounded w-full mb-2" required>
+                <label for="editPlayerPosition" class="font-semibold">Position:</label>
+                <select id="editPlayerPosition" class="border pl-1 py-1 rounded w-full mb-2" required>
                     <option value="">Select Position</option>
                     <option value="GK">Goal Keeper</option>
                     <option value="CB">Center Back</option>
@@ -291,60 +467,74 @@
                     <option value="ST">Striker</option>
                 </select>
 
-                <label for="playerNationality" class="font-semibold">Nationality:</label>
-                <input type="text" id="playerNationality" class="border pl-1 py-1 rounded w-full mb-2" required />
-
-                <label for="playerClub" class="font-semibold">Club:</label>
-                <input type="text" id="playerClub" class="border pl-1 py-1 rounded w-full mb-2" required />
-
-                <label for="playerRating" class="font-semibold">Rating:</label>
-                <input type="number" id="playerRating" class="border pl-1 py-1 rounded w-full mb-2" required />
-
-                <div id="goalkeeperStats" class="hidden">
+                <div id="editGoalkeeperStats" class="hidden">
                     <h3 class="font-semibold">Goalkeeper Stats</h3>
-                    <label for="playerDiving" class="font-semibold">Diving:</label>
-                    <input type="number" id="playerDiving" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerDiving" class="font-semibold">Diving:</label>
+                    <input type="number" id="editPlayerDiving" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerHandling" class="font-semibold">Handling:</label>
-                    <input type="number" id="playerHandling" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerHandling" class="font-semibold">Handling:</label>
+                    <input type="number" id="editPlayerHandling" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerKicking" class="font-semibold">Kicking:</label>
-                    <input type="number" id="playerKicking" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerKicking" class="font-semibold">Kicking:</label>
+                    <input type="number" id="editPlayerKicking" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerReflexes" class="font-semibold">Reflexes:</label>
-                    <input type="number" id="playerReflexes" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerReflexes" class="font-semibold">Reflexes:</label>
+                    <input type="number" id="editPlayerReflexes" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerSpeed" class="font-semibold">Speed:</label>
-                    <input type="number" id="playerSpeed" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerSpeed" class="font-semibold">Speed:</label>
+                    <input type="number" id="editPlayerSpeed" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerPositioning" class="font-semibold">Positioning:</label>
-                    <input type="number" id="playerPositioning" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerPositioning" class="font-semibold">Positioning:</label>
+                    <input type="number" id="editPlayerPositioning" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
                 </div>
 
-                <div id="outfieldStats" class="hidden">
+                <div id="editOutfieldStats" class="hidden">
                     <h3 class="font-semibold">Outfield Player Stats</h3>
-                    <label for="playerPace" class="font-semibold">Pace:</label>
-                    <input type="number" id="playerPace" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerPace" class="font-semibold">Pace:</label>
+                    <input type="number" id="editPlayerPace" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerShooting" class="font-semibold">Shooting:</label>
-                    <input type="number" id="playerShooting" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerShooting" class="font-semibold">Shooting:</label>
+                    <input type="number" id="editPlayerShooting" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerPassing" class="font-semibold">Passing:</label>
-                    <input type="number" id="playerPassing" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerPassing" class="font-semibold">Passing:</label>
+                    <input type="number" id="editPlayerPassing" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerDribbling" class="font-semibold">Dribbling:</label>
-                    <input type="number" id="playerDribbling" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerDribbling" class="font-semibold">Dribbling:</label>
+                    <input type="number" id="editPlayerDribbling" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerDefending" class="font-semibold">Defending:</label>
-                    <input type="number" id="playerDefending" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerDefending" class="font-semibold">Defending:</label>
+                    <input type="number" id="editPlayerDefending" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
 
-                    <label for="playerPhysical" class="font-semibold">Physical:</label>
-                    <input type="number" id="playerPhysical" class="border pl-1 py-1 rounded w-full mb-2" />
+                    <label for="editPlayerPhysical" class="font-semibold">Physical:</label>
+                    <input type="number" id="editPlayerPhysical" class="border pl-1 py-1 rounded w-full mb-2" min="1"
+                        max="100" />
                 </div>
 
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Save Changes</button>
+                <label for="editPlayerNationality" class="font-semibold">Nationality:</label>
+                <input type="text" id="editPlayerNationality" class="border pl-1 py-1 rounded w-full mb-2" required />
 
-                <button id="Cancle" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Cancel</button>
+                <label for="editPlayerClub" class="font-semibold">Club:</label>
+                <input type="text" id="editPlayerClub" class="border pl-1 py-1 rounded w-full mb-2" required />
+
+                <label for="editPlayerRating" class="font-semibold">Rating:</label>
+                <input type="number" id="editPlayerRating" class="border pl-1 py-1 rounded w-full mb-2" required min="1"
+                    max="100" />
+
+                <button id="editSave" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Save
+                    Changes</button>
+
+                <button id="editCancel" type="button" class="bg-blue-500 text-white py-2 px-4 rounded">Cancel</button>
             </form>
         </div>
     </div>
