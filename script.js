@@ -4,7 +4,6 @@ function displayAllPlayers() {
   const playersList = JSON.parse(localStorage.getItem("players"));
   playersList.forEach((player) => {
     const playerElement = document.createElement("div");
-    playerElement.draggable = true;
     playerElement.classList.add(
       "border",
       "p-4",
@@ -42,7 +41,6 @@ function addPlayer(event) {
   const playerPosition = document.getElementById("playerPosition").value;
 
   if (playerPosition === "GK") {
-    // Ensure goalkeeper stats are visible
     const goalkeeperStatsVisible = !document
       .getElementById("goalkeeperStats")
       .classList.contains("hidden");
@@ -427,7 +425,6 @@ function Removing() {
 function initializePlayers() {
   let players = JSON.parse(localStorage.getItem("players")) || [];
   players = players.map((player) => {
-    // If stats are not in a nested object, restructure the player object
     if (!player.stats) {
       const stats =
         player.position === "GK"
@@ -448,7 +445,6 @@ function initializePlayers() {
               physical: player.physical || "",
             };
 
-      // Remove individual stat properties
       const cleanedPlayer = { ...player, stats };
       delete cleanedPlayer.pace;
       delete cleanedPlayer.shooting;
@@ -497,14 +493,12 @@ function Editing() {
         document.getElementById("editPlayerRating").value = playerToEdit.rating;
         playerPosition.value = playerToEdit.position;
 
-        // Ensure stats object exists
         playerToEdit.stats = playerToEdit.stats || {};
 
         if (playerToEdit.position === "GK") {
           GoalKeeperStats.classList.remove("hidden");
           outfieldStats.classList.add("hidden");
 
-          // Default to empty string if stat doesn't exist
           document.getElementById("editPlayerDiving").value =
             playerToEdit.stats.diving || "";
           document.getElementById("editPlayerHandling").value =
@@ -521,7 +515,6 @@ function Editing() {
           GoalKeeperStats.classList.add("hidden");
           outfieldStats.classList.remove("hidden");
 
-          // Default to empty string if stat doesn't exist
           document.getElementById("editPlayerPace").value =
             playerToEdit.stats.pace || "";
           document.getElementById("editPlayerShooting").value =
@@ -567,8 +560,8 @@ Save.addEventListener("click", (event) => {
     nationality: document.getElementById("editPlayerNationality").value,
     club: document.getElementById("editPlayerClub").value,
     rating: document.getElementById("editPlayerRating").value,
-    photo: "", // You might want to keep the existing photo
-    flag: "", // You might want to keep the existing flag
+    photo: "",
+    flag: "",
     stats: {},
   };
 
@@ -598,7 +591,6 @@ Save.addEventListener("click", (event) => {
   );
 
   if (playerIndex !== -1) {
-    // Preserve existing photo and flag
     updatedPlayer.photo = players[playerIndex].photo;
     updatedPlayer.flag = players[playerIndex].flag;
 
@@ -619,29 +611,4 @@ cancelButton.addEventListener("click", function () {
   const editingBox = document.getElementById("EditingBox");
   editingBox.classList.add("hidden");
   document.getElementById("editPlayerForm").reset();
-});
-// Allow the drop
-function allowDrop(event) {
-  event.preventDefault();
-}
-
-// Handle the drop
-function drop(event) {
-  event.preventDefault();
-  const playerData = event.dataTransfer.getData("text/plain");
-  const player = JSON.parse(playerData);
-
-  // Get the goalkeeper name element
-  const goalkeeperNameElement = document.getElementById("goalkeeperName");
-
-  // Update the h2 element with the player's name
-  goalkeeperNameElement.innerText = player.name; // Set the player's name
-}
-
-// Handle drag start
-document.querySelectorAll(".player-card").forEach((card) => {
-  card.addEventListener("dragstart", (event) => {
-    const playerData = card.getAttribute("data-player");
-    event.dataTransfer.setData("text/plain", playerData);
-  });
 });
