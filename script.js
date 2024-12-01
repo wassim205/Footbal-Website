@@ -1,11 +1,10 @@
-
-
 function displayAllPlayers() {
   const playersContainer = document.getElementById("allPlayers");
   playersContainer.innerHTML = "";
   const playersList = JSON.parse(localStorage.getItem("players"));
   playersList.forEach((player) => {
     const playerElement = document.createElement("div");
+    playerElement.draggable = true;
     playerElement.classList.add(
       "border",
       "p-4",
@@ -13,7 +12,8 @@ function displayAllPlayers() {
       "bg-white",
       "rounded-md",
       "cursor-pointer",
-      "ParentFunc"
+      "ParentFunc",
+      "player-card"
     );
     playerElement.innerHTML = `
     <div class='flex justify-between'>
@@ -216,6 +216,12 @@ const LeftCenter = document.getElementById("CenterPlayerLeft");
 const RightCenter = document.getElementById("CenterPlayerRight");
 const LeftTopStriker = document.getElementById("LeftStriker");
 const RightTopStriker = document.getElementById("RightStriker");
+const RightSTStats = document.getElementById("RightST");
+const LeftLW = document.getElementById("LeftLW");
+const RightRW = document.getElementById("RigthRW");
+const LeftCM = document.getElementById("LeftCM");
+const RightCM = document.getElementById("RightCM");
+const CenterCM = document.getElementById("CenterCM");
 
 selectedFormation.addEventListener("change", function () {
   const selectedFormationValue =
@@ -244,6 +250,14 @@ selectedFormation.addEventListener("change", function () {
     );
     LeftMiddle.innerHTML = "LM";
 
+    LeftCM.classList.add(
+      "-translate-x-16",
+      "-translate-y-12",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+
     LeftCenterPlayer.classList.add(
       "-translate-x-16",
       "translate-y-8",
@@ -252,6 +266,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     LeftCenter.classList.add(
+      "-translate-x-16",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    CenterCM.classList.add(
       "-translate-x-16",
       "translate-y-8",
       "transition-all",
@@ -267,6 +288,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightCenter.classList.add(
+      "-translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightCM.classList.add(
       "-translate-x-20",
       "-translate-y-2",
       "transition-all",
@@ -289,6 +317,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightMiddle.innerHTML = "RM";
+    RightRW.classList.add(
+      "translate-x-10",
+      "translate-y-56",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
 
     LeftTopStriker.classList.add(
       "translate-x-20",
@@ -305,6 +340,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     LeftTopStriker.innerHTML = "ST";
+    LeftLW.classList.add(
+      "translate-x-20",
+      "-translate-y-2",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
 
     RightTopStriker.classList.add(
       "translate-x-24",
@@ -314,6 +356,13 @@ selectedFormation.addEventListener("change", function () {
       "ease-out"
     );
     RightTop.classList.add(
+      "translate-x-24",
+      "translate-y-8",
+      "transition-all",
+      "duration-500",
+      "ease-out"
+    );
+    RightSTStats.classList.add(
       "translate-x-24",
       "translate-y-8",
       "transition-all",
@@ -330,24 +379,30 @@ selectedFormation.addEventListener("change", function () {
 
     midlleLiftPlayer.classList.remove("-translate-x-16", "-translate-y-12");
     LeftMiddle.classList.remove("-translate-x-16", "-translate-y-12");
+    LeftCM.classList.remove("-translate-x-16", "-translate-y-12");
     LeftMiddle.innerHTML = "CM";
 
     LeftCenterPlayer.classList.remove("-translate-x-16", "translate-y-8");
     LeftCenter.classList.remove("-translate-x-16", "translate-y-8");
+    CenterCM.classList.remove("-translate-x-16", "translate-y-8");
 
     RightCenterPlayer.classList.remove("-translate-x-20", "-translate-y-2");
     RightCenter.classList.remove("-translate-x-20", "-translate-y-2");
+    RightCM.classList.remove("-translate-x-20", "-translate-y-2");
 
     midlleRightPlayer.classList.remove("translate-x-10", "translate-y-56");
     RightMiddle.classList.remove("translate-x-10", "translate-y-56");
+    RightRW.classList.remove("translate-x-10", "translate-y-56");
     RightMiddle.innerHTML = "RW";
 
     LeftTopStriker.classList.remove("translate-x-20", "-translate-y-2");
     LeftTop.classList.remove("translate-x-20", "-translate-y-2");
+    LeftLW.classList.remove("translate-x-20", "-translate-y-2");
     LeftTopStriker.innerHTML = "LW";
 
     RightTopStriker.classList.remove("translate-x-24", "translate-y-8");
     RightTop.classList.remove("translate-x-24", "translate-y-8");
+    RightSTStats.classList.remove("translate-x-24", "translate-y-8");
   }
 });
 function Removing() {
@@ -564,4 +619,29 @@ cancelButton.addEventListener("click", function () {
   const editingBox = document.getElementById("EditingBox");
   editingBox.classList.add("hidden");
   document.getElementById("editPlayerForm").reset();
+});
+// Allow the drop
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+// Handle the drop
+function drop(event) {
+  event.preventDefault();
+  const playerData = event.dataTransfer.getData("text/plain");
+  const player = JSON.parse(playerData);
+
+  // Get the goalkeeper name element
+  const goalkeeperNameElement = document.getElementById("goalkeeperName");
+
+  // Update the h2 element with the player's name
+  goalkeeperNameElement.innerText = player.name; // Set the player's name
+}
+
+// Handle drag start
+document.querySelectorAll(".player-card").forEach((card) => {
+  card.addEventListener("dragstart", (event) => {
+    const playerData = card.getAttribute("data-player");
+    event.dataTransfer.setData("text/plain", playerData);
+  });
 });
